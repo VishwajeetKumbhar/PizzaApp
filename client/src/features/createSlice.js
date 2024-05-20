@@ -7,7 +7,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // })
 export const showUser = createAsyncThunk("showUser", async (args, { rejectWithValue }) => {
     const response = await fetch(
-        "http://localhost:8005/getData"
+        "https://pizza-app-two-kappa.vercel.app/getData"
     );
     try {
         const result = await response.json();
@@ -26,17 +26,7 @@ export const pizzaData = createSlice({
         error: null
     },
     extraReducers:{
-        // [getAllData.pending]: (state) => {
-        //     state.loading = true
-        // },
-        // [getAllData.fulfilled]: (state, action) => {
-        //     state.loading = false;
-        //     state.users = action.palyload;
-        // },
-        // [getAllData.rejected]: (state, action) => {
-        //     state.loading = false;
-        //     state.error = action.palyload
-        // },
+     
         [showUser.pending]: (state) => {
             state.loading = true;
         },

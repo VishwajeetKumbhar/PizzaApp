@@ -18,7 +18,7 @@ router.get("/getdata", async (req, res) => {
 
 //register SignUp Users In DB
 
-router.post("/register", async (req, res) => {
+router.post("https://pizza-app-two-kappa.vercel.app/register", async (req, res) => {
     const { name, email, mobile, password, cpassword } = req.body
     if (!name || !email || !mobile || !password || !cpassword) {
         res.status(422).json({ error: "Fill the all data" })
@@ -46,7 +46,7 @@ router.post("/register", async (req, res) => {
 
 //Get Data for Login From DB
 
-router.post("/login", async (req, res) => {
+router.post("https://pizza-app-two-kappa.vercel.app/login", async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -87,7 +87,7 @@ router.post("/login", async (req, res) => {
 
 //API for Adding Pizza Into Cart
 
-router.post("/addCart/:id", authenicate, async (req, res) => {
+router.post("https://pizza-app-two-kappa.vercel.app/addCart/:id", authenicate, async (req, res) => {
     try {
         const { id } = req.params;
         const pizzaCart = await pizza.findOne({ _id: id })
@@ -114,7 +114,7 @@ router.post("/addCart/:id", authenicate, async (req, res) => {
 
 // Api for Get Indivisual Pizza Data
 //Add to Cart
-router.get("/singlepizza/:id", async (req, res) => {
+router.get("https://pizza-app-two-kappa.vercel.app/singlepizza/:id", async (req, res) => {
     try {
         const { id } = req.params;
         console.log(id)
@@ -127,7 +127,7 @@ router.get("/singlepizza/:id", async (req, res) => {
 
 
 // get Login User Cart Details 
-router.get("/cartdetails", authenicate, async (req, res) => {
+router.get("https://pizza-app-two-kappa.vercel.app/cartdetails", authenicate, async (req, res) => {
     try {
         const buyuser = await USER.findOne({ _id: req.userID });
         res.status(201).json(buyuser);
@@ -139,7 +139,7 @@ router.get("/cartdetails", authenicate, async (req, res) => {
 
 
 // get valid user
-router.get("/validuser", authenicate, async (req, res) => {
+router.get("https://pizza-app-two-kappa.vercel.app/validuser", authenicate, async (req, res) => {
     try {
         const validuserone = await USER.findOne({ _id: req.userID });
         res.status(201).json(validuserone);
@@ -149,7 +149,7 @@ router.get("/validuser", authenicate, async (req, res) => {
 })
 
 // remove Item from Cart
-router.get("/delete/:id", authenicate, async (req, res) => {
+router.get("https://pizza-app-two-kappa.vercel.app/delete/:id", authenicate, async (req, res) => {
     try {
         const product = req.params;
         console.log("Try to delete this id", product.id)
@@ -166,7 +166,7 @@ router.get("/delete/:id", authenicate, async (req, res) => {
 })
 
 // User Logout
-router.get("/logout", authenicate, (req, res) => {
+router.get("https://pizza-app-two-kappa.vercel.app/logout", authenicate, (req, res) => {
     try {
         req.rootUser.tokens = req.rootUser.tokens.filter((curele) => {
             return curele.token !== req.token

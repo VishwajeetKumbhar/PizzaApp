@@ -4,15 +4,17 @@ const mongoose = require("mongoose")
 require("./db/conn");
 const users = require("./model/userSchema")
 const cors = require("cors")
-const PORT = process.env.PORT || 8005
+require('dotenv').config();
+require('dotenv').config();
+require("dotenv").config()
+
+const PORT = process.env.PORT;
 const router = require("./router/router")
 const cookieParser = require("cookie-parser")
-require("dotenv").config()
 const authenticate = require("./middleware/authenticat")
 
 const stripe = require("stripe")("sk_test_51OU1hESJ3xUqIdYsTNBhdYYOqN5KXFyhH9FzzQc7YTe81RfmOMOtLKhMJKX8h8gRTF37CWQjgug9uDyzSzs60NZY00LPU31Ugb")
 
-require('dotenv').config();
 app.use(cors());
 app.use(cookieParser(""))
 app.use(express.json());
